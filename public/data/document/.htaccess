@@ -1,0 +1,5 @@
+# Empêcher l'affichage de la liste des fichiers du répertoire
+Options -Indexes
+
+# Bloquer tout accès direct aux fichiers via une URL
+Require all denied
