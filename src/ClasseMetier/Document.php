@@ -4,9 +4,12 @@ declare(strict_types=1);
 namespace ClasseMetier;
 
 use ClasseTechnique\ColumnInt;
+use ClasseTechnique\ColumnList;
 use ClasseTechnique\ColumnText;
+use ClasseTechnique\Database;
 use ClasseTechnique\Select;
 use ClasseTechnique\Table;
+use PDO;
 
 /**
  * Classe Document
@@ -43,10 +46,8 @@ class Document extends Table
             maxLength: 100
         ));
 
-        $this->addColumn('id_type', new ColumnInt(
-            required: true,
-            insertable: true,
-            updatable: true
+        $this->addColumn('id_type', new ColumnList(
+            values: Document::getById()
         ));
     }
 
@@ -74,15 +75,13 @@ class Document extends Table
     /**
      * Récupère un document par son identifiant avec son type.
      */
-    public static function getById(int $id): ?array
+    public static function getById(): ?array
     {
-        $sql = <<<SQL
-            SELECT document.id, document.titre, document.nom_fichier, document.id_type, type.libelle as type_libelle
-            FROM document
-            JOIN type ON document.id_type = type.id
-            WHERE document.id = :id
-        SQL;
-        $select = new Select();
-        return $select->getRow($sql, ['id' => $id]);
+        $sql = "select type.id from type join document where type.id = document.id_type;";
+        $db = Database::getInstance();
+        $cmd = $db->query($sql);
+        $lesIds = $cmd->fetchAll(PDO::FETCH_COLUMN);
+        $cmd->closeCursor();
+        return $lesIds;
     }
 }

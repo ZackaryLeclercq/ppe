@@ -10,6 +10,10 @@
       "href": "/club/presentation"
     },
     {
+      "label": "Documents",
+      "href": "/data/document"
+    },
+    {
       "label": "Entrainement",
       "href": "/club/entrainement"
     },

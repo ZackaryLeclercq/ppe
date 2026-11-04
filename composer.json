@@ -15,6 +15,7 @@
     "ext-iconv": "*",
     "ext-curl": "*",
     "ext-libxml": "*",
-    "ext-dom": "*"
+    "ext-dom": "*",
+    "ext-fileinfo": "*"
   }
 }
