@@ -4,30 +4,29 @@
 // Import des fonctions nécessaires
 // -----------------------------------------------------------------------------------
 
-import {appelAjax} from "/composant/fonction/ajax.js";
-import {genererMessage} from "/composant/fonction/afficher.js";
-
+import {appelAjax} from "/../../composant/fonction/ajax.js";
+import {genererMessage} from "/../../composant/fonction/afficher.js";
 
 // -----------------------------------------------------------------------------------
 // Déclaration des variables globales
 // -----------------------------------------------------------------------------------
 
-const conteneurDocuments = document.getElementById('conteneur-documents');
+const lesDocuments = document.getElementById('lesDocuments');
 
 // -----------------------------------------------------------------------------------
 // Fonctions de traitement
 // -----------------------------------------------------------------------------------
 
 function chargerDocuments() {
-    conteneurDocuments.textContent = "Chargement des documents...";
+    lesDocuments.textContent = "Chargement des documents...";
 
     appelAjax({
         url: '/club/documents/ajax/afficherdocument.php',
         success: (data) => {
-            conteneurDocuments.textContent = "";
+            lesDocuments.textContent = "";
 
             if (!data || data.length === 0) {
-                conteneurDocuments.appendChild(genererMessage("Aucun document n'est disponible pour le moment.", 'bleu'));
+                lesDocuments.appendChild(genererMessage("Aucun document n'est disponible pour le moment.", 'bleu'));
                 return;
             }
 
@@ -69,15 +68,14 @@ function chargerDocuments() {
             });
 
             table.appendChild(tbody);
-            conteneurDocuments.appendChild(table);
+            lesDocuments.appendChild(table);
         },
         error: () => {
-            conteneurDocuments.textContent = "";
-            conteneurDocuments.appendChild(genererMessage("Impossible de charger les documents.", 'rouge'));
+            lesDocuments.textContent = "";
+            lesDocuments.appendChild(genererMessage("Impossible de charger les documents.", 'rouge'));
         }
     });
 }
-
 
 // -----------------------------------------------------------------------------------
 // Programme principal

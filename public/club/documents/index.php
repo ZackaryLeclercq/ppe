@@ -12,6 +12,5 @@ require $_SERVER['DOCUMENT_ROOT'] . "/../bootstrap/bootstrap.php";
 $page = new Page();
 $page->setTitre("Liste des documents PDF")
     ->setDonnee('lesDocuments', Document::getAll())
-    ->setDonnee('repertoire', substr(DOSSIER_DOCUMENT, strlen(DOSSIER_WWW)))
     ->avecJeton()
     ->afficher();
