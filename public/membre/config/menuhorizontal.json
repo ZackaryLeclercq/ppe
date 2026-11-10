@@ -10,6 +10,10 @@
       "href": "/membre/accueil"
     },
     {
+      "label": "Documents",
+      "href": "/data/document"
+    },
+    {
       "label": "Annuaire des membres",
       "href": "/membre/annuaire"
     },
