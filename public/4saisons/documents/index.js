@@ -56,7 +56,6 @@ function chargerDocuments() {
                 lien.href = `/afficherdocument.php?id=${doc.id}`;
                 lien.target = '_blank';
                 lien.textContent = doc.titre;
-                lien.style.textDecoration = 'underline';
 
                 tdTitre.appendChild(lien);
                 tr.appendChild(tdTitre);
