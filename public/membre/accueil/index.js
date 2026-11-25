@@ -10,14 +10,12 @@ import {getData} from "/composant/fonction/page.js";
 // -----------------------------------------------------------------------------------
 // Déclaration des variables globales
 // -----------------------------------------------------------------------------------
+
 const divInformation = document.getElementById("divInformation");
 const divDocumentation = document.getElementById("divDocumentation");
 const divFonction = document.getElementById("divFonction");
 const mesFonctions = document.getElementById("mesFonctions");
-
 const lesFonctions = getData("lesFonctions");
-
-
 
 // -----------------------------------------------------------------------------------
 // procédures évènementielles
@@ -57,5 +55,20 @@ if (lesFonctions && lesFonctions.length > 0) {
     mesFonctions.style.display = "none";
 }
 
+if (divDocumentation) {
+    const ul = document.createElement("ul");
+    ul.className = "admin-fonctions-list";
 
+    const li = document.createElement("li");
+    li.className = "admin-fonctions-item";
+
+    const a = document.createElement("a");
+    a.className = "admin-fonctions-link";
+    a.href = "/documentation/membre/";
+    a.textContent = "📄 Consultation des documents";
+
+    li.appendChild(a);
+    ul.appendChild(li);
+    divDocumentation.appendChild(ul);
+}
 

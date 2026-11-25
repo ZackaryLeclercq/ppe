@@ -4,8 +4,8 @@
 // Import des fonctions nécessaires
 // -----------------------------------------------------------------------------------
 
-import {appelAjax} from "/../../composant/fonction/ajax.js";
-import {genererMessage} from "/../../composant/fonction/afficher.js";
+import {appelAjax} from "/composant/fonction/ajax.js";
+import {genererMessage} from "/composant/fonction/afficher.js";
 
 // -----------------------------------------------------------------------------------
 // Déclaration des variables globales
@@ -22,6 +22,7 @@ function chargerDocuments() {
 
     appelAjax({
         url: '/club/documents/ajax/afficherdocument.php',
+        method: 'GET',
         success: (data) => {
             lesDocuments.textContent = "";
 
@@ -60,7 +61,7 @@ function chargerDocuments() {
                 lien.href = `/afficherdocument.php?id=${doc.id}`;
                 lien.className = 'btn btn-primary btn-sm';
                 lien.target = '_blank';
-                lien.textContent = "Consulter / Télécharger";
+                lien.textContent = "Consulter";
 
                 tdAction.appendChild(lien);
                 tr.append(tdTitre, tdAction);
