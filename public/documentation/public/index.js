@@ -41,10 +41,7 @@ function chargerDocuments() {
             const thTitre = document.createElement('th');
             thTitre.textContent = "Titre du document";
 
-            const thAction = document.createElement('th');
-            thAction.textContent = "Action";
-
-            trHead.append(thTitre, thAction);
+            trHead.appendChild(thTitre);
             thead.appendChild(trHead);
             table.appendChild(thead);
 
@@ -54,17 +51,15 @@ function chargerDocuments() {
                 const tr = document.createElement('tr');
 
                 const tdTitre = document.createElement('td');
-                tdTitre.textContent = doc.titre; // Sécurisé nativement contre les injections XSS
 
-                const tdAction = document.createElement('td');
                 const lien = document.createElement('a');
                 lien.href = `/afficherdocument.php?id=${doc.id}`;
-                lien.className = 'btn btn-primary btn-sm';
                 lien.target = '_blank';
-                lien.textContent = "Consulter";
+                lien.textContent = doc.titre;
+                lien.style.textDecoration = 'underline';
 
-                tdAction.appendChild(lien);
-                tr.append(tdTitre, tdAction);
+                tdTitre.appendChild(lien);
+                tr.appendChild(tdTitre);
                 tbody.appendChild(tr);
             });
 
